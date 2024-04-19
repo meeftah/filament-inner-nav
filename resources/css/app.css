@@ -1,2 +1,32 @@
 @tailwind components;
 @tailwind utilities;
+
+.fi-inner-nav-sticky {
+    position: fixed !important;
+    width: calc((1200px - 2 * 4px) / 3) !important;
+  
+    @media (max-width: 1535px) {
+      position: fixed !important;
+      width: calc((1450px - 2 * 4px) / 3) !important;
+    }
+  
+    @media (max-width: 1279px) {
+      position: fixed !important;
+      width: calc((1200px - 2 * 4px) / 3) !important;
+    }
+  
+    @media (max-width: 1023px) {
+      position: fixed !important;
+      width: calc((900px - 2 * 4px) / 3) !important;
+    }
+  
+    @media (max-width: 767px) {
+      position: inherit !important;
+      width: calc((600px - 2 * 4px) / 3) !important;
+    }
+  
+    @media (max-width: 639px) {
+      position: inherit !important;
+      width: 100% !important;
+    }
+  }
