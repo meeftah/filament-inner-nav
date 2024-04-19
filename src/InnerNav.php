@@ -5,20 +5,15 @@ declare(strict_types=1);
 namespace Rawilk\FilamentInnerNav;
 
 use Closure;
-use Filament\Navigation\NavigationBuilder;
 use Filament\Pages\Page;
-use Filament\Support\Concerns\Configurable;
-use Filament\Support\Concerns\EvaluatesClosures;
+use Filament\Support\Components\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use Rawilk\FilamentInnerNav\Enums\InnerNavLayout;
 
-class InnerNav extends NavigationBuilder
+class InnerNav extends Component
 {
-    use Configurable;
-    use EvaluatesClosures;
-
     protected InnerNavLayout|Closure|null $layout = null;
 
     protected string|Closure|HtmlString|null $title = null;
@@ -26,6 +21,8 @@ class InnerNav extends NavigationBuilder
     protected string|Closure|HtmlString|null $description = null;
 
     protected bool|Closure $isWireNavigate = false;
+
+    protected bool|Closure $isSticky = false;
 
     protected array|Collection $navigationItems;
 
@@ -115,5 +112,17 @@ class InnerNav extends NavigationBuilder
     public function shouldWireNavigate(): bool
     {
         return $this->evaluate($this->isWireNavigate);
+    }
+
+    public function sticky(bool|Closure $condition = true): self
+    {
+        $this->isSticky = $condition;
+
+        return $this;
+    }
+
+    public function isSticky(): bool
+    {
+        return $this->isSticky;
     }
 }
