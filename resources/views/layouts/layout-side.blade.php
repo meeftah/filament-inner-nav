@@ -67,6 +67,7 @@
         <ul @class([
             'space-y-2 font-inter font-medium',
             'mt-4' => filled($navTitle) || filled($navDescription),
+            'fi-inner-nav-sticky' => $innerNav->isSticky(),
         ])>
             @foreach ($innerNav->getNavigationItems() as $item)
                 @if ($item instanceof \Rawilk\FilamentInnerNav\InnerNavGroup)
