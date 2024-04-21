@@ -113,13 +113,25 @@
 </script>
 <script>
     $(function() {
-        window.addEventListener('scroll', function() {
-            if ($(window).scrollTop() > 90) {
-                $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky').setAttribute('style', 'top: 0px;');
-            }
-            if ($(window).scrollTop() < 95) {
-                $('#fi-inner-nav-sticky').removeClass('fi-inner-nav-sticky');
-            }
-        });
+        if ($innerNav->isSticky()) {
+            window.addEventListener('scroll', function() {
+                if ($(window).scrollTop() > 90) {
+                    $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky');
+                }
+                if ($(window).scrollTop() < 95) {
+                    $('#fi-inner-nav-sticky').removeClass('fi-inner-nav-sticky');
+                }
+            });
+
+            window.addEventListener('load', function() {
+                let getScrollPosition = (el = window) => ({
+                    x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+                    y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
+                });
+                if (getScrollPosition().y > 90) {
+                    $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky');
+                }
+            });
+        }
     });
 </script>
