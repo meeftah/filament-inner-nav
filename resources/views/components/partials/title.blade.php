@@ -1,10 +1,11 @@
 @props([
     'title' => null,
     'description' => null,
+    'sticky' => false,
 ])
 
 @if (filled($title) || filled($description))
-    <div {{ $attributes->class('flex items-center rtl:space-x-reverse') }}>
+    <div {{ $attributes->class('flex items-center rtl:space-x-reverse') }} {{ $sticky ? 'fi-inner-nav-sticky' : '' }}>
         <div class="w-full">
             @if (filled($title))
                 @unless ($title instanceof \Illuminate\Support\HtmlString)

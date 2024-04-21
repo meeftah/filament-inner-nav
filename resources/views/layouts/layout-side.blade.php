@@ -61,6 +61,7 @@
         <x-filament-inner-nav::partials.title
             :title="$navTitle"
             :description="$navDescription"
+            :sticky="$innerNav->isSticky()"
         />
 
         {{-- nav links --}}
