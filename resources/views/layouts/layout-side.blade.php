@@ -113,7 +113,7 @@
 </script>
 <script>
     $(function() {
-        if ($innerNav->isSticky()) {
+        @if ($innerNav->isSticky())
             window.addEventListener('scroll', function() {
                 if ($(window).scrollTop() > 90) {
                     $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky');
@@ -132,6 +132,6 @@
                     $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky');
                 }
             });
-        }
+        @endif
     });
 </script>
