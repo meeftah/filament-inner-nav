@@ -117,7 +117,7 @@
             if ($(window).scrollTop() > 90) {
                 $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky').setAttribute('style', 'top: 0px;');
             }
-            if ($(window).scrollTop() < 90) {
+            if ($(window).scrollTop() < 95) {
                 $('#fi-inner-nav-sticky').removeClass('fi-inner-nav-sticky');
             }
         });
