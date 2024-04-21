@@ -57,44 +57,50 @@
     @include('filament-inner-nav::partials.load-css')
 >
     <div class="{{ $navClasses }}" style="{{ $navStyles }}">
-        {{-- title/description --}}
-        <x-filament-inner-nav::partials.title
-            :title="$navTitle"
-            :description="$navDescription"
-            :sticky="$innerNav->isSticky()"
-        />
-
-        {{-- nav links --}}
-        <ul @class([
-            'space-y-2 font-inter font-medium',
-            'mt-4' => filled($navTitle) || filled($navDescription),
-            'fi-inner-nav-sticky-ul' => $innerNav->isSticky(),
+        <div @class([
+            'fi-inner-nav-sticky' => $innerNav->isSticky(),
         ])>
-            @foreach ($innerNav->getNavigationItems() as $item)
-                @if ($item instanceof \Rawilk\FilamentInnerNav\InnerNavGroup)
-                    <x-filament-inner-nav::group-item
-                        :group="$item"
-                        :wire-navigate="$shouldWireNavigate"
-                    >
-                        {{ $item->getLabel() }}
-                    </x-filament-inner-nav::group-item>
-                @else
-                    <x-filament-inner-nav::item
-                        :active="$item->isActive()"
-                        :icon="$item->getIcon()"
-                        :active-icon="$item->getActiveIcon()"
-                        :href="$item->getUrl()"
-                        :badge="$item->getBadge()"
-                        :badge-color="$item->getBadgeColor()"
-                        :should-open-url-in-new-tab="$item->shouldOpenUrlInNewTab()"
-                        :wire-navigate="$shouldWireNavigate"
-                        :disabled="$item->getIsDisabled()"
-                    >
-                        {{ $item->getLabel() }}
-                    </x-filament-inner-nav::item>
-                @endif
-            @endforeach
-        </ul>
+
+            {{-- title/description --}}
+            <x-filament-inner-nav::partials.title
+                :title="$navTitle"
+                :description="$navDescription"
+            />
+
+            {{-- nav links --}}
+            <ul @class([
+                'space-y-2 font-inter font-medium',
+                'mt-4' => filled($navTitle) || filled($navDescription),
+                'fi-inner-nav-sticky-ul' => $innerNav->isSticky(),
+            ])>
+                @foreach ($innerNav->getNavigationItems() as $item)
+                    @if ($item instanceof \Rawilk\FilamentInnerNav\InnerNavGroup)
+                        <x-filament-inner-nav::group-item
+                            :group="$item"
+                            :wire-navigate="$shouldWireNavigate"
+                        >
+                            {{ $item->getLabel() }}
+                        </x-filament-inner-nav::group-item>
+                    @else
+                        <x-filament-inner-nav::item
+                            :active="$item->isActive()"
+                            :icon="$item->getIcon()"
+                            :active-icon="$item->getActiveIcon()"
+                            :href="$item->getUrl()"
+                            :badge="$item->getBadge()"
+                            :badge-color="$item->getBadgeColor()"
+                            :should-open-url-in-new-tab="$item->shouldOpenUrlInNewTab()"
+                            :wire-navigate="$shouldWireNavigate"
+                            :disabled="$item->getIsDisabled()"
+                        >
+                            {{ $item->getLabel() }}
+                        </x-filament-inner-nav::item>
+                    @endif
+                @endforeach
+            </ul>
+
+        </div>
+        
     </div>
 
     {{-- content --}}

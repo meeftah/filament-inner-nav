@@ -1,16 +1,10 @@
 @props([
     'title' => null,
     'description' => null,
-    'sticky' => false,
 ])
 
-@php
-    $class = 'flex items-center rtl:space-x-reverse';
-    $class .= $sticky ? ' fi-inner-nav-sticky-title' : '';
-@endphp
-
 @if (filled($title) || filled($description))
-    <div {{ $attributes->class($class) }}>
+    <div {{ $attributes->class('flex items-center rtl:space-x-reverse') }}>
         <div class="w-full">
             @if (filled($title))
                 @unless ($title instanceof \Illuminate\Support\HtmlString)
