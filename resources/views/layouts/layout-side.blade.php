@@ -107,3 +107,21 @@
         {{ $slot }}
     </div>
 </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous">
+</script>
+<script>
+    $(function() {
+        window.addEventListener('scroll', function() {
+            if ($(window).scrollTop() > 90) {
+                $('#asd').addClass('fi-inner-nav-sticky').setAttribute('style', 'top: 0px;');
+            }
+            if ($(window).scrollTop() < 90) {
+                $('#asd').removeClass('fi-inner-nav-sticky');
+            }
+        });
+    });
+</script>
