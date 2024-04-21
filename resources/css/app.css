@@ -12,7 +12,7 @@
   
     @media (max-width: 1279px) {
       position: fixed !important;
-      width: calc((800px - 2 * 4px) / 3) !important;
+      width: calc((750px - 2 * 4px) / 3) !important;
     }
   
     @media (max-width: 1023px) {
