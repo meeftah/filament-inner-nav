@@ -4,8 +4,13 @@
     'sticky' => false,
 ])
 
+@php
+    $class = 'flex items-center rtl:space-x-reverse';
+    $class .= $sticky ? ' fi-inner-nav-sticky-title' : '';
+@endphp
+
 @if (filled($title) || filled($description))
-    <div {{ $attributes->class('flex items-center rtl:space-x-reverse') }} {{ $sticky ? 'fi-inner-nav-sticky' : '' }}>
+    <div {{ $attributes->class($class) }}>
         <div class="w-full">
             @if (filled($title))
                 @unless ($title instanceof \Illuminate\Support\HtmlString)
