@@ -4,7 +4,7 @@
 
 @php
     /** @var \Rawilk\FilamentInnerNav\InnerNav $innerNav */
-    $innerNav = $innerNav ?? static::getResource()::innerNav($this->record ?? null, $this);
+    $innerNav = $innerNav ?? (isset($this->parent) ? static::getParentResource()::innerNav($this->parent ?? null, $this) : static::getResource()::innerNav($this->record ?? null, $this));
 
     $isTopLayout = $innerNav->isLayout(\Rawilk\FilamentInnerNav\Enums\InnerNavLayout::Top);
 @endphp
