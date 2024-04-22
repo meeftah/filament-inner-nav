@@ -57,7 +57,9 @@
     @include('filament-inner-nav::partials.load-css')
 >
     <div class="{{ $navClasses }}" style="{{ $navStyles }}">
-        <div id="fi-inner-nav-sticky">
+        <div @class([
+            'fi-inner-nav-sticky' => $innerNav->isSticky(),
+        ])>
 
             {{-- title/description --}}
             <x-filament-inner-nav::partials.title
@@ -105,33 +107,3 @@
         {{ $slot }}
     </div>
 </div>
-
-<script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous">
-</script>
-<script>
-    $(function() {
-        @if ($innerNav->isSticky())
-            window.addEventListener('scroll', function() {
-                if ($(window).scrollTop() > 90) {
-                    $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky');
-                }
-                if ($(window).scrollTop() < 95) {
-                    $('#fi-inner-nav-sticky').removeClass('fi-inner-nav-sticky');
-                }
-            });
-
-            window.addEventListener('load', function() {
-                let getScrollPosition = (el = window) => ({
-                    x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
-                    y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
-                });
-                if (getScrollPosition().y > 90) {
-                    $('#fi-inner-nav-sticky').addClass('fi-inner-nav-sticky');
-                }
-            });
-        @endif
-    });
-</script>

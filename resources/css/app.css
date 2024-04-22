@@ -4,30 +4,25 @@
 .fi-inner-nav-sticky {
     position: fixed !important;
     width: calc((850px - 2 * 4px) / 3) !important;
-    top: 90px;
 
     @media (max-width: 1535px) {
         position: fixed !important;
         width: calc((850px - 2 * 4px) / 3) !important;
-        top: 90px;
     }
 
     @media (max-width: 1279px) {
         position: fixed !important;
         width: calc((650px - 2 * 4px) / 3) !important;
-        top: 90px;
     }
 
     @media (max-width: 1023px) {
         position: fixed !important;
         width: calc((550px - 2 * 4px) / 3) !important;
-        top: 90px;
     }
 
     @media (max-width: 767px) {
         position: inherit !important;
         width: calc((600px - 2 * 4px) / 3) !important;
-        top: 90px;
     }
 
     @media (max-width: 639px) {
